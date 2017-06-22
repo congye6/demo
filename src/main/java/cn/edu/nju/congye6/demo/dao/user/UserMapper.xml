@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.nju.congye6.demo.dao.user.UserMapper">
+	<insert id="addUser" parameterType="UserPO">
+		<selectKey resultType="int" keyProperty="id" order="AFTER"> 
+			SELECT LAST_INSERT_ID()   
+		</selectKey>
+		insert into user(username,password,name) value(#{username},#{password},#{name})
+	</insert>
+	
+	<select id="getUser" parameterType="String" resultType="UserPO">
+		select * from user where username=#{value} 
+	</select>
+	
+	<delete id="deleteUser" parameterType="String">
+		delete from user where username=#{value}
+	</delete>
+	
+	<update id="updateUser" parameterType="UserPO">
+		update user set password=#{password},name=#{name} where username=#{username}	
+	</update>
+</mapper>
