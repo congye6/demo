@@ -8,10 +8,18 @@ public class UserPO{
 	
 	private String name;
 	
-	
+	private int id;
 
 	public UserPO() {
 		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public UserPO(String username, String password, String name) {

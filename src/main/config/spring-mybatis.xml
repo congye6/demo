@@ -23,9 +23,7 @@
 		
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
-	
-	<!-- 启动缓存注解 -->
- 	<cache:annotation-driven/>
+	 
 	
 	<!-- 数据源，使用dbcp -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -33,8 +31,8 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<property name="maxActive" value="10" />
-		<property name="maxIdle" value="5" />
+		<property name="maxActive" value="300" />
+		<property name="maxIdle" value="20" />
 	</bean>
 	
 	<!-- sqlSessionFactory -->
@@ -55,7 +53,7 @@
 			指定扫描的包名
 			如果扫描多个包，每个包中使用半角逗号分隔
 		-->
-		<property name="basePackage" value="cn.edu.nju.congye6.demo.mapper" />
+		<property name="basePackage" value="cn.edu.nju.congye6.demo.dao" />
 		<!-- 如果用ref，就会先于context:property-placeholder执行，使dbcp数据源失效 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>

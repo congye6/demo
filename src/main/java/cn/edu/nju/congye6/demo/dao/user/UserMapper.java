@@ -4,11 +4,11 @@ import cn.edu.nju.congye6.demo.po.UserPO;
 
 public interface UserMapper {
 
-	public void addUser(UserPO user);
+	public boolean addUser(UserPO user);
 	
 	public UserPO getUser(String username);
 	
-	public void updateUser(UserPO user);
+	public boolean updateUser(UserPO user);
 	
-	public void deleteUser(String username);
+	public boolean deleteUser(String username);
 }
