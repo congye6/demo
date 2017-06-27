@@ -9,7 +9,6 @@ import cn.edu.nju.congye6.demo.bl.user.UserBlService;
 import cn.edu.nju.congye6.demo.dao.user.UserMapper;
 import cn.edu.nju.congye6.demo.po.UserPO;
 @Service
-@Transactional
 public class UserBl implements UserBlService{
 	
 	@Autowired

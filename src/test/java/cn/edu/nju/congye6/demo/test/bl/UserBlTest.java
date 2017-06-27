@@ -1,5 +1,7 @@
 package cn.edu.nju.congye6.demo.test.bl;
 
+import java.util.Calendar;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +32,25 @@ public class UserBlTest {
 	
 	@Test
 	public void getUser(){
-		UserPO po=userBl.getUser("congye7");
-		System.out.println(po.getPassword());
-		po=userBl.getUser("congye8");
-		po=userBl.getUser("congye9");
-		System.out.println(po==null);
+		long start=Calendar.getInstance().getTimeInMillis();
+		UserPO po;
+		for(int i=0;i<1000;i++){
+			po=userBl.getUser("congye7");
+		}
+		po=userBl.getUser("congye7");
+		long end=Calendar.getInstance().getTimeInMillis();
+		long cache=end-start;
+		
+		
+		start=Calendar.getInstance().getTimeInMillis();
+		for(int i=0;i<1000;i++){
+			po=userBl.getUser("congye8");
+		}
+		end=Calendar.getInstance().getTimeInMillis();
+		
+		System.out.println((end-start));
+		System.out.println(cache);
+		
 	}
 	
 }
